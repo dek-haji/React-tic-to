@@ -68,15 +68,15 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([
         {
-          squares: squares
+          squares: squares,
+          latestMoveSquare: i,
         }
       ]),
-        latestMoveSquare: i,
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     });
+    console.log("latest",this.state.latestMoveSquare)
   }
-
   jumpTo(step) {
     this.setState({
       stepNumber: step,
@@ -93,6 +93,7 @@ class Game extends React.Component {
 
         const moves = history.map((step, move) => {
             const latestMoveSquare = step.latestMoveSquare;
+            console.log(latestMoveSquare,"again")
             const col = 1 + latestMoveSquare % 3;
             const row = 1 + Math.floor(latestMoveSquare / 3);
       const desc = move ?
